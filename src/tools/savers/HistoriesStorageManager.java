@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tools;
+package tools.savers;
 
-import entity.Vinil;
+import entity.History;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,17 +17,17 @@ import java.util.logging.Logger;
 
 
 
-public class VinilsStorageManager {
+public class HistoriesStorageManager {
 
-    public void saveVinilsToFile(Vinil[] vinils) {
-        String fileName = "vinils";
+    public void saveHistoriesToFile(History[] histories) {
+        String fileName = "histories";
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         
     try {
             fos = new FileOutputStream(fileName);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(vinils);
+            oos.writeObject(histories);
             oos.flush();
         } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
@@ -35,15 +35,15 @@ public class VinilsStorageManager {
             System.out.println("Ошибка ввода ввывода");
         }
     }
-    public Vinil[] loadVinilsFromFile(){
-        Vinil[] vinils = null;
-        String fileName = "vinils";
+    public History[] loadHistoriesFromFile(){
+        History[] histories = null;
+        String fileName = "histories";
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try{
         fis = new FileInputStream(fileName);
         ois = new ObjectInputStream(fis);
-        return (Vinil[]) ois.readObject();
+        return (History[]) ois.readObject();
      } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
      } catch (IOException ex) {
@@ -51,11 +51,10 @@ public class VinilsStorageManager {
         } catch (ClassNotFoundException ex) {       
            System.out.println("Нет такого класса");
         }
-        return vinils;
+        return histories;
     }
     
 }
 
         
-
 

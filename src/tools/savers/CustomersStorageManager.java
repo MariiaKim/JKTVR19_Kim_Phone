@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tools;
+package tools.savers;
 
-import entity.History;
+import entity.Vinil;
+import entity.Customer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,19 +16,22 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author pupil
+ */
+public class CustomersStorageManager {
 
-
-public class HistoriesStorageManager {
-
-    public void saveHistoriesToFile(History[] histories) {
-        String fileName = "histories";
+    public void saveCustomersToFile(Customer[] customers) {
+        
+        String fileName = "customers";
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         
-    try {
+        try {
             fos = new FileOutputStream(fileName);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(histories);
+            oos.writeObject(customers);
             oos.flush();
         } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
@@ -35,15 +39,15 @@ public class HistoriesStorageManager {
             System.out.println("Ошибка ввода ввывода");
         }
     }
-    public History[] loadHistoriesFromFile(){
-        History[] histories = null;
-        String fileName = "histories";
+    public Customer[] loadCustomersFromFile(){
+        Customer[] customers = null;
+        String fileName = "customers";
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try{
         fis = new FileInputStream(fileName);
         ois = new ObjectInputStream(fis);
-        return (History[]) ois.readObject();
+        return (Customer[]) ois.readObject();
      } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
      } catch (IOException ex) {
@@ -51,10 +55,11 @@ public class HistoriesStorageManager {
         } catch (ClassNotFoundException ex) {       
            System.out.println("Нет такого класса");
         }
-        return histories;
+        return customers;
     }
+
+    
+
+  
     
 }
-
-        
-

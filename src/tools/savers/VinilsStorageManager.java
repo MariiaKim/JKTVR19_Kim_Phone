@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tools;
+package tools.savers;
 
 import entity.Vinil;
-import entity.Customer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,22 +15,19 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author pupil
- */
-public class CustomersStorageManager {
 
-    public void saveCustomersToFile(Customer[] customers) {
-        
-        String fileName = "customers";
+
+public class VinilsStorageManager {
+
+    public void saveVinilsToFile(Vinil[] vinils) {
+        String fileName = "vinils";
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         
-        try {
+    try {
             fos = new FileOutputStream(fileName);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(customers);
+            oos.writeObject(vinils);
             oos.flush();
         } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
@@ -39,15 +35,15 @@ public class CustomersStorageManager {
             System.out.println("Ошибка ввода ввывода");
         }
     }
-    public Customer[] loadCustomersFromFile(){
-        Customer[] customers = null;
-        String fileName = "customers";
+    public Vinil[] loadVinilsFromFile(){
+        Vinil[] vinils = null;
+        String fileName = "vinils";
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try{
         fis = new FileInputStream(fileName);
         ois = new ObjectInputStream(fis);
-        return (Customer[]) ois.readObject();
+        return (Vinil[]) ois.readObject();
      } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
      } catch (IOException ex) {
@@ -55,11 +51,11 @@ public class CustomersStorageManager {
         } catch (ClassNotFoundException ex) {       
            System.out.println("Нет такого класса");
         }
-        return customers;
+        return vinils;
     }
-
-    
-
-  
     
 }
+
+        
+
+

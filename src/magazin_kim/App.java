@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package magazin_kim;
-import tools.CustomersStorageManager;
-import tools.CustomerManager;
+import tools.savers.CustomersStorageManager;
+import tools.creaters.CustomerManager;
 import entity.Customer;
 import entity.Vinil;
 import entity.History;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
-import tools.VinilManager;
-import tools.VinilsStorageManager;
-import tools.HistoriesStorageManager;
-import tools.UserCardManager;
+import tools.creaters.VinilManager;
+import tools.savers.VinilsStorageManager;
+import tools.savers.HistoriesStorageManager;
+import tools.creaters.UserCardManager;
 
 
 /**
