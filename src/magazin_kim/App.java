@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package magazin_kim;
+
+
 import tools.savers.CustomersStorageManager;
 import tools.creaters.CustomerManager;
 import entity.Customer;
@@ -17,10 +15,7 @@ import tools.savers.HistoriesStorageManager;
 import tools.creaters.UserCardManager;
 
 
-/**
- *
- * @author Melnikov
- */
+
 public class App {
     private Scanner scanner = new Scanner(System.in);
     private Customer[] customers = new Customer[10];
@@ -46,31 +41,31 @@ public class App {
     }
 
     public void run() {
-        System.out.println("--- Библиотека ---");
+        System.out.println("--- Магазин ---");
         boolean repeat = true;
         do{
-           System.out.println("=============================");
-        System.out.println("Задачи магазина");
-        System.out.println("0.выйти из программы");
-        System.out.println("1.Добавить пластинку");
-        System.out.println("2.посмотреть список пластинок");
-        System.out.println("3.Добавить заказчиков");
-        System.out.println("4. список заказчиков");
-        System.out.println("5.выдать пластинку");
-        System.out.println("6.вернуть пластинку");
-        System.out.println("7.список проданных пластинок:");
-        System.out.println("выбирите задачу: ");
-        String task = scanner.nextLine();
-        System.out.println("=============================");
+            System.out.println("=============================");
+            System.out.println("Задачи:");
+            System.out.println("0. Выйти из программы");
+            System.out.println("1. Добавить пластинку");
+            System.out.println("2. Список пластинок");
+            System.out.println("3. Добавить заказчика");
+            System.out.println("4. Список заказчиков");
+            System.out.println("5. Отправить пластинку");
+            System.out.println("6. Отмена заказа");
+            System.out.println("7. Список оставшихся заказов");
+            System.out.print("Выберите задачу: ");
+            String task = scanner.nextLine();
+            System.out.println("=============================");
             switch (task) {
                 case "0":
                     System.out.println("--- конец программы ---");
                     repeat = false;
                     break;
                 case "1":
-                    System.out.println("1.Добавить пластинку");
-                    VinilManager VinilManager = new VinilManager(); 
-                    Vinil vinil = VinilManager.addVinil();
+                    System.out.println("---  Добавить пластинку ---");
+                    VinilManager vinilManager = new VinilManager(); 
+                    Vinil vinil = vinilManager.addVinil();
                     for (int i = 0; i < vinils.length; i++) {
                         if(vinils[i] == null){
                             vinils[i] = vinil;
@@ -81,7 +76,8 @@ public class App {
                     vinilsStorageManager.saveVinilsToFile(vinils);
                     break;
                 case "2":
-                     System.out.println("2.посмотреть список пластинок");
+                    System.out.println("--- Список пластинок ---");
+                    
                     int j = 0;
                     for (Vinil b : vinils) {
                         if(b != null){
@@ -91,7 +87,7 @@ public class App {
                     }
                     break;
                 case "3":
-                    System.out.println("3.Добавить заказчиков");
+                    System.out.println("--- Добавить заказчика ---");
                     CustomerManager customerManager = new CustomerManager(); 
                     Customer customer = customerManager.addCustomer();
                     for (int i = 0; i < customers.length; i++) {
@@ -104,7 +100,7 @@ public class App {
                     customersStorageManager.saveCustomersToFile(customers);
                     break;
                 case "4":
-                    System.out.println("4. список заказчиков");
+                    System.out.println("--- Список заказчиков ---");
                     int n = 0;
                     for (Customer r : customers) {
                         if(r != null){
@@ -114,9 +110,9 @@ public class App {
                     }
                     break;
                 case "5":
-                    System.out.println("5.выдать пластинку");
+                    System.out.println("--- Отправить пластинку ---");
                     UserCardManager userCardManager = new UserCardManager();
-                    History history = userCardManager.giveVinil(vinils, customers);
+                    History history = userCardManager.giveVinils(vinils, customers);
                     for (int i = 0; i < histories.length; i++) {
                         if(histories[i] == null){
                             histories[i] = history;
@@ -127,34 +123,14 @@ public class App {
                     historiesStorageManager.saveHistoriesToFile(histories);
                     break;
                 case "6":
-                     System.out.println("6.вернуть пластинку");
-                    
-                    System.out.println("список проданных пластинок:");
-                    boolean notReadBooks = true;
-                    for (int i = 0;i<histories.length;i++) {
-                        if(histories[i] != null && histories[i].getReturnDate() == null){
-                            System.out.printf("%d. Книгу \"%s\" читает %s %s%n"
-                                    ,i+1
-                                    ,histories[i].getVinil().getTitle()
-                                    ,histories[i].getCustomer().getFistname()
-                                    ,histories[i].getCustomer().getLastname()
-                            );
-
-                            boolean notReadVinils = false;
-                        }
-                    }
-                    if(notReadBooks){
-                        System.out.println("Заказанных пластинок нет");
-                        break;
-                    }
-                    System.out.println("Выберите номер заказанных пластинок: ");
-                    int historyNumber = scanner.nextInt();
-                    histories[historyNumber - 1].setReturnDate(new GregorianCalendar().getTime());
+                    System.out.println("--- Возврат пластинок ---");
+                    userCardManager = new UserCardManager();
+                    userCardManager.returnVinils(histories);
                     historiesStorageManager = new HistoriesStorageManager();
                     historiesStorageManager.saveHistoriesToFile(histories);
                     break;
                 case "7":  
-                   System.out.println("7.список проданных пластинок:");
+                    System.out.println("--- Список возвращенных пластинок ---");
                     n = 0;
                     for (History h : histories) {
                         if(h != null && h.getReturnDate() == null){

@@ -15,20 +15,31 @@ public class VinilManager {
 
     
 
-    public Vinil addVinil() {
+   public Vinil addVinil() {
         Vinil vinil = new Vinil();
-        System.out.println("------зарегистрировать пластинку------");
-        System.out.println("введите автора:");
+        System.out.println("--- Добавить пластинку ---");
+        System.out.println("Введите название:");
         Scanner scanner = new Scanner(System.in);
-        vinil.setAuthor(scanner.nextLine());
-        System.out.println("введите название:");
         vinil.setTitle(scanner.nextLine());
-        System.out.println("введите дату:");
+        System.out.println("Введите автора:");
+        vinil.setAuthor(scanner.nextLine());
+        System.out.println("Введите год издания:");
         vinil.setPublishedYear(scanner.nextInt());
-       
         return vinil;
+    }
     
-}
+
+
+    public void addVinilToArray(Vinil vinil, Vinil[] vinils) {
+           for (int i = 0; i < vinils.length; i++) {
+                        if(vinils[i] == null){
+                            vinils[i] = vinil;
+                            break;
+                        }
+                    }
+    }
+
+  
     
     
 }
