@@ -5,7 +5,7 @@
  */
 package tools.savers;
 
-import entity.Vinil;
+import entity.Phone;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,17 +17,17 @@ import java.util.logging.Logger;
 
 
 
-public class VinilsStorageManager {
+public class PhonsStorageManager {
 
-    public void saveVinilsToFile(Vinil[] vinils) {
-        String fileName = "vinils";
+    public void savePhonsToFile(Phone[] phons) {
+        String fileName = "phons";
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         
     try {
             fos = new FileOutputStream(fileName);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(vinils);
+            oos.writeObject(phons);
             oos.flush();
         } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
@@ -35,15 +35,15 @@ public class VinilsStorageManager {
             System.out.println("Ошибка ввода ввывода");
         }
     }
-    public Vinil[] loadVinilsFromFile(){
-        Vinil[] vinils = null;
-        String fileName = "vinils";
+    public Phone[] loadPhonsFromFile(){
+        Phone[] phons = null;
+        String fileName = "phons";
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try{
         fis = new FileInputStream(fileName);
         ois = new ObjectInputStream(fis);
-        return (Vinil[]) ois.readObject();
+        return (Phone[]) ois.readObject();
      } catch (FileNotFoundException ex) {
             System.out.println("Нет такого файла");
      } catch (IOException ex) {
@@ -51,7 +51,7 @@ public class VinilsStorageManager {
         } catch (ClassNotFoundException ex) {       
            System.out.println("Нет такого класса");
         }
-        return vinils;
+        return phons;
     }
     
 }

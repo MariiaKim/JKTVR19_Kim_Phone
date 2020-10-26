@@ -1,3 +1,6 @@
+/*
+ добавление историй всех операций
+ */
 
 package entity;
 
@@ -11,7 +14,7 @@ import java.util.Date;
  * @author pupil
  */
 public class History implements Serializable{
-    private Vinil vinil;
+    private Phone phone;
     private Customer customer;
     private Date takeOnDate;
     private Date returnDate;
@@ -19,19 +22,19 @@ public class History implements Serializable{
     public History() {
     }
 
-    public History(Vinil vinil, Customer customer, Date takeOnDate, Date returnDate) {
-        this.vinil = vinil;
+    public History(Phone phone, Customer customer, Date takeOnDate, Date returnDate) {
+        this.phone = phone;
         this.customer = customer;
         this.takeOnDate = takeOnDate;
         this.returnDate = returnDate;
     }
 
-    public Vinil getVinil() {
-        return vinil;
+    public Phone getPhone() {
+        return phone;
     }
 
-    public void setVinil(Vinil vinil) {
-        this.vinil = vinil;
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 
     public Customer getCustomer() {
@@ -60,9 +63,10 @@ public class History implements Serializable{
 
     @Override
     public String toString() {
-        return "History{" + "vinil=" + vinil + ", customer=" + customer + ", takeOnDate=" + takeOnDate + ", returnDate=" + returnDate + '}';
+        return "History{" + "phone=" + phone + ", customer=" + customer + ", takeOnDate=" + takeOnDate + ", returnDate=" + returnDate + '}';
     }
 
+    
     
 }
 

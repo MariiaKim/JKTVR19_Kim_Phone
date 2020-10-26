@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ добавление заказчиков
  */
 package entity;
 
@@ -14,15 +12,17 @@ import java.io.Serializable;
 public class Customer implements Serializable{
     private String fistname;
     private String lastname;
-    private String phone;
+    private String number_phone;
+    private Integer summa ;
 
     public Customer() {
     }
 
-    public Customer(String fistname, String lastname, String phone) {
+    public Customer(String fistname, String lastname, String number_phone, Integer summa) {
         this.fistname = fistname;
         this.lastname = lastname;
-        this.phone = phone;
+        this.number_phone = number_phone;
+        this.summa = summa;
     }
 
     public String getFistname() {
@@ -41,19 +41,31 @@ public class Customer implements Serializable{
         this.lastname = lastname;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getNumber_phone() {
+        return number_phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setNumber_phone(String number_phone) {
+        this.number_phone = number_phone;
+    }
+
+    public Integer getSumma() {
+        return summa;
+    }
+
+    public void setSumma(Integer summa) {
+        this.summa = summa;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "fistname=" + fistname + ", lastname=" + lastname + ", phone=" + phone + '}';
+        return "Customer{" + "fistname=" + fistname + ", lastname=" + lastname + ", number_phone=" + number_phone + ", summa=" + summa + '}';
     }
 
+    
+
+    
+   
    
 }
 

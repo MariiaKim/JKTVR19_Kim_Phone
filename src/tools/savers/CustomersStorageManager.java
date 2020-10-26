@@ -5,7 +5,7 @@
  */
 package tools.savers;
 
-import entity.Vinil;
+import entity.Phone;
 import entity.Customer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
