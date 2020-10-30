@@ -1,5 +1,5 @@
 /*
-создание картотеки всех заказчиков 
+
  */
 package tools.creaters;
 
@@ -8,6 +8,7 @@ import entity.History;
 import entity.Customer;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import java.util.Scanner;
 
 
@@ -16,7 +17,7 @@ public class UserCardManager {
     private Scanner scanner = new Scanner(System.in);
 
     public History givePhons(Phone[] phons, Customer[] customers) {
-//        History history = new History();
+       History history = new History();
         System.out.println("--- Список заказчиков ---");
         int n = 0;
         for (Customer r : customers) {
@@ -38,11 +39,28 @@ public class UserCardManager {
             }
         }
          System.out.print("Выберите вариант из списка: ");    
-         int vinilNumber = scanner.nextInt();
-         Phone phone = phons[vinilNumber - 1];
-         Calendar calendar = new GregorianCalendar();
+         int phoneNumber = scanner.nextInt();
+         Phone phone  = phons[phoneNumber - 1];
+         
 
-        return new History(phone, customer, calendar.getTime(), null);
+         do {            
+            if (customer.getSumma() >= phone.getPrice()){
+                   int sell= customer.getSumma() - phone.getPrice();
+                   customer.setSumma(sell);
+                    System.out.println(" заказ ожидает курьера, остаток счета:"+sell);
+                    phons[phoneNumber - 1]= null;
+                            
+                   break;
+                   
+            }else{
+                 System.out.println("недостаточно средств, введите внесенную сумму:");
+                 customer.setSumma(scanner.nextInt());
+            }
+        } while (true);
+         Calendar c = new GregorianCalendar();
+         return new History(phone, customer, c.getTime(), null);
+       
+     
     }
 
     public void returnPhons(History[] histories) {

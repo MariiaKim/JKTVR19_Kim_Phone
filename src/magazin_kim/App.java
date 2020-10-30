@@ -18,9 +18,9 @@ import tools.creaters.UserCardManager;
 
 public class App {
     private Scanner scanner = new Scanner(System.in);
-    private Customer[] customers = new Customer[10];
-    private Phone[] phons = new Phone[10];
-    private History[] histories = new History[10];
+    private Customer[] customers = new Customer[20];
+    private Phone[] phons = new Phone[20];
+    private History[] histories = new History[20];
 
     public App() {
         CustomersStorageManager rsm = new CustomersStorageManager();
@@ -53,7 +53,7 @@ public class App {
             System.out.println("4. Список заказчиков");
             System.out.println("5. Оформить заказ телефона");
             System.out.println("6. Отмена заказа");
-            System.out.println("7. Список оставшихся заказов");
+            System.out.println("7. Список проданных телефонов");
             System.out.print("Выберите задачу: ");
             String task = scanner.nextLine();
             System.out.println("=============================");
@@ -130,7 +130,7 @@ public class App {
                     historiesStorageManager.saveHistoriesToFile(histories);
                     break;
                 case "7":  
-                    System.out.println("--- Список возвращенных телефонов ---");
+                    System.out.println("--- Список проданных телефонов ---");
                     n = 0;
                     for (History h : histories) {
                         if(h != null && h.getReturnDate() == null){
