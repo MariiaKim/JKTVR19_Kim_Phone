@@ -50,7 +50,7 @@ public class App {
         }
     }
     public void run() {
-        System.out.println("--- Библиотека ---");
+        System.out.println("--- Магазин ---");
         SecureManager secureManager = new SecureManager();
         App.loggedInUser = secureManager.checkInLogin(users,customers);
         UserInterface userInterface = new UserInterface();
@@ -59,7 +59,7 @@ public class App {
             //публикуем интерфейс менеджера
             userInterface.printManagerUI(users, customers, phons, histories);
         }else if("CUSTOMER".equals(App.loggedInUser.getRole())){
-            //публикуем интерфейс читателя
+            //публикуем интерфейс заказчика
             userInterface.printManagerUI(users, customers, phons, histories);
         }
     }
