@@ -38,7 +38,7 @@ public class PhoneManager {
                         }
                     }
     }
-  public boolean printListBooks(Phone[] phons) {
+  public boolean printListPhons(Phone[] phons) {
         if(phons == null || phons.length < 1){
             System.out.println("Заказов нет!");
             return false;

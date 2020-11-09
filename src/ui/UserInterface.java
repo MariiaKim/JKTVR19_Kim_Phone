@@ -28,7 +28,7 @@ public class UserInterface {
     public void printManagerUI(User[] users, Customer[] customers, Phone[] phons, History[] histories){
         boolean repeat = true;
         do{
-             System.out.println("=============================");
+            System.out.println("=============================");
             System.out.println("Задачи:");
             System.out.println("0. Выйти из программы");
             System.out.println("1. Добавить телефон");
@@ -41,48 +41,47 @@ public class UserInterface {
             System.out.print("Выберите задачу: ");
             String task = scanner.nextLine();
             System.out.println("=============================");
-             switch (task) {
+            switch (task) {
                 case "0":
                     System.out.println("--- конец программы ---");
                     repeat = false;
                     break;
                 case "1":
-                    System.out.println("---  Добавить товар ---");
-                    Phone phone = phoneManager.createPhone;
+                    System.out.println("--- Добавить телефон ---");
+                    Phone phone = phoneManager.addPhone();
                     phoneManager.addPhoneToArray(phone,phons);
                     break;
-
                 case "2":
-                    System.out.println("--- Список телефонов в наличии ---");
+                    System.out.println("--- Список всех телефонов в наличии ---");
                     phoneManager.printListPhons(phons);
                     break;
                 case "3":
                     System.out.println("--- Добавить заказчика ---");
-                   Customer customer = customerManager.createCustomer();
-                    customerManager.addCustomerToArray(customer,customers);
+                    Customer customer = customerManager.createCustomer();
+                    customerManager.addCustomerToArray(customer, customers);
                     break;
                 case "4":
                     System.out.println("--- Список заказчиков ---");
-                   customerManager.printListCustomers(customers);
+                    customerManager.printListCustomers(customers);
                     break;
                 case "5":
                     System.out.println("--- Оформить заказ телефона ---");
-                     userCardManager.checkOutPhone(phons, customers, histories);
+                    userCardManager.givePhons(phons, customers);
                     break;
                 case "6":
                     System.out.println("--- Отмена заказа ---");
-                     userCardManager.returnPhone(histories);
+                    userCardManager.returnPhons(histories);
                     break;
                 case "7":  
                     System.out.println("--- Список проданных телефонов ---");
-                   userCardManager.printListReadPhons(histories);
+                    userCardManager.givePhons(phons, customers);
                     break;
                 default:
                     System.out.println("Нет такой задачи");;
             }
         }while(repeat);
     }
-     public void printReaderUI(User[] users, Reader[] readers, Book[] books, History[] histories){
+    public void printCustomerUI(User[] users, Customer[] customers, Phone[] phons, History[] histories){
         boolean repeat = true;
         do{
             System.out.println("=============================");
@@ -106,15 +105,15 @@ public class UserInterface {
                     break;
                 case "2":
                     System.out.println("--- Оформить заказ телефона ---");
-                    userCardManager.checkOutPhone(phons, customers, histories);
+                    userCardManager.givePhons(phons, customers);
                     break;
                 case "3":
                     System.out.println("--- Отмена заказа ---");
-                    userCardManager.returnPhone(histories);
+                    userCardManager.returnPhons(histories);
                     break;
                 case "4":  
                     System.out.println("--- Список проданных телефонов ---");
-                    userCardManager.printListReadPhons(histories);
+                    userCardManager.returnPhons(histories);
                     break;
                 default:
                     System.out.println("Нет такой задачи");;
@@ -122,7 +121,3 @@ public class UserInterface {
         }while(repeat);
     }
 }
-
-
- 
-

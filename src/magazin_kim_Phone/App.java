@@ -60,7 +60,7 @@ public class App {
             userInterface.printManagerUI(users, customers, phons, histories);
         }else if("CUSTOMER".equals(App.loggedInUser.getRole())){
             //публикуем интерфейс читателя
-            userInterface.printCustomerUI(users, customers, phons, histories);
+            userInterface.printManagerUI(users, customers, phons, histories);
         }
     }
 
