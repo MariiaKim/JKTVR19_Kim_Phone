@@ -38,9 +38,21 @@ public class PhoneManager {
                         }
                     }
     }
-
+  public boolean printListBooks(Phone[] phons) {
+        if(phons == null || phons.length < 1){
+            System.out.println("Заказов нет!");
+            return false;
+        }
+        int j = 0;
+        for (Phone b : phons) {
+            if(b != null){
+                System.out.println(j+1+". "+b.toString());
+                j++;
+            }
+        }
+        return true;
   
-    
+  }
     
 }
 
